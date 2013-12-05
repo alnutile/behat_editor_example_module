@@ -24,12 +24,64 @@ class BehatExampleSubContext extends BehatContext implements DrupalSubContextInt
     }
 
     /**
-     * This will cause a 10 second delay
+     * Use a xpath to act on a module
      *
-     * @Given /^I wait longer$/
+     * @When /^I press the xpath "([^"]*)"$/
      */
-    public function iWaitLonger() {
-        sleep(10);
+    public function iPressTheXpath($arg)
+    {
+        $node = $this->getMainContext()->getSession()->getPage()->find('xpath', $arg);
+        if($node) {
+            $this->getMainContext()->getSession()->getPage()->find('xpath', $arg)->press();
+        } else {
+            throw new Exception('Element not found');
+        }
+    }
+
+    /**
+     * Use a xpath to act on a module
+     *
+     * @When /^I follow the xpath "([^"]*)"$/
+     */
+    public function iFollowTheXpath($arg)
+    {
+        $node = $this->getMainContext()->getSession()->getPage()->find('xpath', $arg);
+        if($node) {
+            $this->getMainContext()->getSession()->getPage()->find('xpath', $arg)->click();
+        } else {
+            throw new Exception('Element not found');
+        }
+    }
+
+    /**
+     * Use a css path to act on a module
+     *
+     * @When /^I press the element "([^"]*)"$/
+     */
+    public function iPressTheElement($arg)
+    {
+        $node = $this->getMainContext()->getSession()->getPage()->find('css', $arg);
+        if($node) {
+            $this->getMainContext()->getSession()->getPage()->find('css', $arg)->press();
+        } else {
+            throw new Exception('Element not found');
+        }
+    }
+
+
+    /**
+     * Use a css path to act on a module
+     *
+     * @When /^I follow the element "([^"]*)"$/
+     */
+    public function iFollowTheElement($arg)
+    {
+        $node = $this->getMainContext()->getSession()->getPage()->find('css', $arg);
+        if($node) {
+            $this->getMainContext()->getSession()->getPage()->find('css', $arg)->click();
+        } else {
+            throw new Exception('Element not found');
+        }
     }
 
 }

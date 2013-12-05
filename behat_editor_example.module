@@ -15,8 +15,7 @@
 function behat_editor_example_form_alter(&$form, &$form_state) {
     $forms = array('behat-editor-edit-form', 'behat-editor-add-form', 'behat-editor-view-form');
     if(in_array($form['#id'], $forms)) {
-
-        $form['questions_area']['question']['behat_editor_example_click']['behat_editor_example_field_action'] = array(
+        $form['questions_area']['question']['questions']['form_fields_and_elements']['behat_editor_example_click']['behat_editor_example_field_action'] = array(
             '#type' => 'select',
             '#title' => t('And I'),
             '#name' => 'behat_editor_example_field_click_on_type',
@@ -29,11 +28,15 @@ function behat_editor_example_form_alter(&$form, &$form_state) {
             ),
         );
 
-        $form['questions_area']['question']['behat_editor_example_click']['behat_editor_example_field_type'] = array(
+        $form['questions_area']['question']['questions']['form_fields_and_elements']['behat_editor_example_click']['behat_editor_example_field_type'] = array(
             '#type' => 'select',
             '#name' => 'behat_editor_example_field_click_on_type',
             '#description' => t('Choose the type eg a css path like div > p:nth-child(1) or name|label|id'),
-            '#options' => array('the element' => t('the element (css path)'), ' ' => t('name|label|id')),
+            '#options' => array(
+                            'the element' => t('the element (css path)'),
+                            ' ' => t('name|label|id'),
+                            'the xpath' => t('the xpath'),
+                          ),
             '#validated' => TRUE,
             '#attributes' => array(
                 'class' => array('col-mg-12', 'behat_editor_example_click_group'),
@@ -41,8 +44,8 @@ function behat_editor_example_form_alter(&$form, &$form_state) {
             ),
         );
 
-        $form['questions_area']['question']['behat_editor_example_click']['behat_editor_example_field_text'] = array(
-            '#type' => 'textfield',
+        $form['questions_area']['question']['questions']['form_fields_and_elements']['behat_editor_example_click']['behat_editor_example_field_text'] = array(
+            '#type' => 'textarea',
             '#name' => 'behat_editor_example_field_text',
             '#attributes' => array(
                 'class' => array('col-mg-12', 'behat_editor_example_click_group'),
@@ -51,7 +54,7 @@ function behat_editor_example_form_alter(&$form, &$form_state) {
             ),
         );
 
-        $form['questions_area']['question']['behat_editor_example_click']['behat_editor_example_action_button'] = array(
+        $form['questions_area']['question']['questions']['form_fields_and_elements']['behat_editor_example_click']['behat_editor_example_action_button'] = array(
             '#type' => 'button',
             '#name' => 'behat_editor_example_action_button',
             '#value' => t('Add'),
