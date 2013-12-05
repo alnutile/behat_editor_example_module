@@ -1,0 +1,5 @@
+name = Behat Editor Example Module
+description = How to extend behat
+core = 7.x
+dependencies[] = composer_manager
+dependencies[] = behat_editor

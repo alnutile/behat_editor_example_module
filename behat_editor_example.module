@@ -1,0 +1,67 @@
+<?php
+
+
+/**
+ * Example of altering all the forms that are seen
+ *  Edit, View, Add
+ * Note:
+ *  Group your code in a module based namespace eg
+ *  behat_editor_example_click
+ *  behat_editor_example_click_group
+ *  behat_editor_example_field_text
+ * @param $form
+ * @param $form_state
+ */
+function behat_editor_example_form_alter(&$form, &$form_state) {
+    $forms = array('behat-editor-edit-form', 'behat-editor-add-form', 'behat-editor-view-form');
+    if(in_array($form['#id'], $forms)) {
+
+        $form['questions_area']['question']['behat_editor_example_click']['behat_editor_example_field_action'] = array(
+            '#type' => 'select',
+            '#title' => t('And I'),
+            '#name' => 'behat_editor_example_field_click_on_type',
+            '#description' => t('And I click or press on a link or button or element <b>called</b>'),
+            '#options' => array('follow' => t('click'), 'press' => t('press')),
+            '#validated' => TRUE,
+            '#attributes' => array(
+                'class' => array('col-mg-12', 'behat_editor_example_click_group'),
+                'data-type' => array('select'),
+            ),
+        );
+
+        $form['questions_area']['question']['behat_editor_example_click']['behat_editor_example_field_type'] = array(
+            '#type' => 'select',
+            '#name' => 'behat_editor_example_field_click_on_type',
+            '#description' => t('Choose the type eg a css path like div > p:nth-child(1) or name|label|id'),
+            '#options' => array('the element' => t('the element (css path)'), ' ' => t('name|label|id')),
+            '#validated' => TRUE,
+            '#attributes' => array(
+                'class' => array('col-mg-12', 'behat_editor_example_click_group'),
+                'data-type' => array('select'),
+            ),
+        );
+
+        $form['questions_area']['question']['behat_editor_example_click']['behat_editor_example_field_text'] = array(
+            '#type' => 'textfield',
+            '#name' => 'behat_editor_example_field_text',
+            '#attributes' => array(
+                'class' => array('col-mg-12', 'behat_editor_example_click_group'),
+                'data-type' => array('textfield'),
+                'placeholder' =>  t('enter the target either an css path or name|label|id'),
+            ),
+        );
+
+        $form['questions_area']['question']['behat_editor_example_click']['behat_editor_example_action_button'] = array(
+            '#type' => 'button',
+            '#name' => 'behat_editor_example_action_button',
+            '#value' => t('Add'),
+            '#attributes' => array(
+                'data-method' => array('append'),
+                'data-step-group' => array('behat_editor_example_click_group'),
+                'class' => array('steps')
+            ),
+            '#suffix' => '<hr>'
+        );
+
+    }
+}
