@@ -9,8 +9,25 @@
  *  behat_editor_example_click
  *  behat_editor_example_click_group
  *  behat_editor_example_field_text
- * @param $form
- * @param $form_state
+ *
+ *  The form "group" needs to be placed inside a category. In this case it is form_fields_and_elements.
+ *  If you look at the behat_editor/tpl/behat_editor_shared_views.inc you will see the grouping choices.
+ *
+ *  Notice there is a name just to make sure it is consistant.
+ *
+ *  ...
+ *  The Title is what is used for text as well as the values entered or chosen.
+ *
+ *  Finally the button has a few data elements to pass information to the javascript.
+ *    class = steps for most needs
+ *    data-type = select to help pass some extra info to the javascript function found in
+ *       behat_editor/js/behat_editor_scenario_builder.js
+ *    data-method = append for most steps replace would be if you wanted to replace the relative step
+ *
+ *  Review behat_editor/tpl/behat_shared_views.inc for more layout examples.
+ *
+ *  @param $form
+ *  @param $form_state
  */
 function behat_editor_example_form_alter(&$form, &$form_state) {
     $forms = array('behat-editor-edit-form', 'behat-editor-add-form', 'behat-editor-view-form');
