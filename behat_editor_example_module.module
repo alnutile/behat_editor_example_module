@@ -29,7 +29,7 @@
  *  @param $form
  *  @param $form_state
  */
-function behat_editor_example_form_alter(&$form, &$form_state) {
+function behat_editor_example_module_form_alter(&$form, &$form_state) {
     $forms = array('behat-editor-edit-form', 'behat-editor-add-form');
     if(in_array($form['#id'], $forms)) {
         $form['questions_area']['question']['questions']['form_fields_and_elements']['behat_editor_example_click']['behat_editor_example_field_action'] = array(
