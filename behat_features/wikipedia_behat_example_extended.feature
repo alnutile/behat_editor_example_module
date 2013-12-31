@@ -1,4 +1,4 @@
- @example @javascript
+ @example @javascript @local_test
  Feature: Example Test for WikiPedia found in Behat Editor Example Module
  
    Scenario: WikiPedia
