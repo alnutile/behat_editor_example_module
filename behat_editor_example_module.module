@@ -37,7 +37,7 @@ function behat_editor_example_module_form_alter(&$form, &$form_state) {
             '#title' => t('And I'),
             '#name' => 'behat_editor_example_field_click_on_type',
             '#description' => t('And I click or press on a link or button or element <b>called</b>'),
-            '#options' => array('follow' => t('click'), 'press' => t('press')),
+            '#options' => array('follow' => t('follow'), 'click' => t('click'), 'press' => t('press')),
             '#validated' => TRUE,
             '#attributes' => array(
                 'class' => array('col-mg-12', 'behat_editor_example_click_group'),
@@ -80,7 +80,7 @@ function behat_editor_example_module_form_alter(&$form, &$form_state) {
                 'data-step-group' => array('behat_editor_example_click_group'),
                 'class' => array('steps')
             ),
-            '#suffix' => '<hr>'
+            '#suffix' => '<div class="help-block">Sometimes click works better on non-links where follow works bests for link</div> <hr>'
         );
 
     }
