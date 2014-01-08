@@ -68,6 +68,20 @@ class BehatExampleSubContext extends BehatContext implements DrupalSubContextInt
         }
     }
 
+    /**
+     * Use a css path to act on a module
+     *
+     * @When /^I click the element "([^"]*)"$/
+     */
+    public function iClickTheElement($arg)
+    {
+        $node = $this->getMainContext()->getSession()->getPage()->find('css', $arg);
+        if($node) {
+            $this->getMainContext()->getSession()->getPage()->find('css', $arg)->click();
+        } else {
+            throw new Exception('Element not found');
+        }
+    }
 
     /**
      * Use a css path to act on a module
